@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333768894258",
+    "project_id": "vts-app-9481a",
+    "storage_bucket": "vts-app-9481a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333768894258:android:6972e9b210dafb79f0192b",
+        "android_client_info": {
+          "package_name": "com.example.vts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEr3dDZEodSjMRfk6jX2oDSW49wd2FiKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
