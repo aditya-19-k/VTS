@@ -40,120 +40,124 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:cardCornerRadius="30dp"
-        android:layout_marginBottom="-20dp">
-
-        <LinearLayout
+            android:id="@+id/card_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"/>
-            <ProgressBar
-                android:id="@+id/progressbar"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="36dp"
-                android:textColor="@color/secondary_color"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                android:text="Welcome"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/please_login_with_your_information"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="30dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/email"/>
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/enter_email"
-                android:inputType="textEmailAddress"
-                android:drawableEnd="@drawable/done_icon"
-                android:alpha="0.7"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/password"/>
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/enter_password"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/password_icon"
-                android:alpha="0.7"/>
+            android:layout_alignParentBottom="true"
+            app:cardCornerRadius="30dp"
+            android:layout_marginBottom="-20dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/rememberMe"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:layout_centerVertical="true"/>
+                    android:visibility="gone"/>
                 <TextView
-                    android:id="@+id/tvForgotPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="36dp"
+                    android:textColor="@color/secondary_color"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Welcome"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/please_login_with_your_information"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="@string/email"/>
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_email"
+                    android:inputType="textEmailAddress"
+                    android:drawableEnd="@drawable/done_icon"
+                    android:alpha="0.7"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="@string/password"/>
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword"
+                    android:drawableEnd="@drawable/password_icon"
+                    android:alpha="0.7"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <CheckBox
+                        android:id="@+id/rememberMe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remember me"
+                        android:layout_centerVertical="true"/>
+                    <TextView
+                        android:id="@+id/tvForgotPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/i_forgot_my_password"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/login"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+                <TextView
+                    android:id="@+id/ivClickToLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/i_forgot_my_password"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
+                    android:layout_gravity="end"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:text="@string/click_to_sign_up"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"/>
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/login"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"/>
-            <TextView
-                android:id="@+id/ivClickToLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:text="@string/click_to_sign_up"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="30dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+
+
 
 
 

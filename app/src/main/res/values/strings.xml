@@ -3,16 +3,20 @@
     <string name="enter_password">Enter password</string>
     <string name="enter_email">Enter email</string>
     <string name="password">Password</string>
-    <string name="email">Email Address</string>
+    <string name="email">User Email</string>
     <string name="login">LOGIN</string>
     <string name="i_forgot_my_password">I forgot my password</string>
     <string name="or_login_with">or login with</string>
     <string name="please_login_with_your_information">Please login with your information</string>
     <string name="please_sign_up_with_your_information">Please sing up with your information</string>
     <string name="sign_up">SIGN UP</string>
-    <string name="name">Name</string>
+    <string name="name">User Name</string>
     <string name="enter_your_full_name">Enter your full name</string>
     <string name="click_to_login">Click to Login</string>
     <string name="click_to_sign_up">Click to Sign Up</string>
     <string name="log_out">Log Out</string>
+    <string name="contact">Contact</string>
+    <string name="devices">Devices</string>
+    <string name="menu">Menu</string>
+    <string name="share">Share</string>
 </resources>

@@ -73,8 +73,10 @@ public class LoginActivity extends AppCompatActivity {
                                 loginBinding.progressbar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
 
-                                    editor.putString("isLogin", "true");
-                                    editor.commit();
+                                    if (loginBinding.rememberMe.isChecked()){
+                                        editor.putString("isLogin", "true");
+                                        editor.commit();
+                                    }
 
                                     Toast.makeText(LoginActivity.this, "Login Successful.",Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
