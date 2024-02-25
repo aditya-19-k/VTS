@@ -15,8 +15,20 @@
     <string name="click_to_login">Click to Login</string>
     <string name="click_to_sign_up">Click to Sign Up</string>
     <string name="log_out">Log Out</string>
-    <string name="contact">Contact</string>
+    <string name="contact">About Us</string>
     <string name="devices">Devices</string>
-    <string name="menu">Menu</string>
+    <string name="menu">Home</string>
     <string name="share">Share</string>
+    <string name="add_device">Add Device</string>
+    <string name="vehicle_number">Vehicle Number:</string>
+    <string name="vehicle_name">Vehicle Name:</string>
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
+    <string name="lat_long_snippet">Lat: %1$.5f, Long: %2$.5f</string>
+    <string name="dropped_pin">Dropped Pin</string>
+    <string name="poi">poi</string>
+    <string name="feature1">Track Your Vehicle form anywhere!</string>
+    <string name="feature2">Keep in touch with your vechicle!</string>
 </resources>

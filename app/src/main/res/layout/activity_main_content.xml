@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondary_color">
+        <ImageButton
+            android:id="@+id/btnDrawerToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/toolbar_menu_icon"
+            android:padding="10dp"
+            android:background="@android:color/transparent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOME"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </androidx.appcompat.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/circle_primary"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/primary_color_circle" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="70dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:text="@string/feature1"/>
+        <ImageView
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/secondary_color_circle" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="70dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:text="@string/feature2"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
