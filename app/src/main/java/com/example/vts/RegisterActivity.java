@@ -92,6 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
 
                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    intent.putExtra("nameKey", name);
                                     startActivity(intent);
                                     finish();
                                     Toast.makeText(RegisterActivity.this, "Account is created.",

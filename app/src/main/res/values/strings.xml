@@ -31,4 +31,6 @@
     <string name="poi">poi</string>
     <string name="feature1">Track Your Vehicle form anywhere!</string>
     <string name="feature2">Keep in touch with your vechicle!</string>
+    <string name="app_support_email">Email</string>
+    <string name="phone_number">Phone</string>
 </resources>

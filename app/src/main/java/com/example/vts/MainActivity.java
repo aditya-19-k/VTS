@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.vts.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,8 +34,8 @@ public class MainActivity extends AppCompatActivity{
     ImageButton btnDrawerToggle;
     NavigationView navigationView;
     FirebaseAuth mAuth;
-    FirebaseDatabase database;
-    DatabaseReference reference;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,9 +69,12 @@ public class MainActivity extends AppCompatActivity{
             mAuth = FirebaseAuth.getInstance();
             String email = mAuth.getCurrentUser().getEmail();
             tvEmailDH.setText(email);
-//            String name = mAuth.getCurrentUser().toString();
-//            tvNameDH.setText(name);
             tvNameDH.setText("");
+
+
+//            String name = reference.getPath().toString();toString
+//            tvNameDH.setText(name);
+
 //            Glide.with(userIcon.getContext())
 //                    .load("https://www.zmo.ai/wp-content/uploads/2023/11/Sea-girl-created-by-ZMO.webp")
 //                    .placeholder(R.drawable.person)
@@ -84,6 +86,15 @@ public class MainActivity extends AppCompatActivity{
         catch (Exception e){
         }
 
+        Intent intent = new Intent();
+        String name = intent.getStringExtra("nameKey");
+        if (name != null) {
+
+            tvNameDH.setText(name);
+            Toast.makeText(this, name, Toast.LENGTH_LONG).show();
+
+        }
+
         // Perform action by selection navigation item
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -91,15 +102,17 @@ public class MainActivity extends AppCompatActivity{
                 int itemId = item.getItemId();
                 if (itemId == R.id.navMenu){
                     drawerLayout.close();
-                    Toast.makeText(MainActivity.this, "This is Home", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                 }
                 if (itemId == R.id.navContact){
                     drawerLayout.close();
-                    Toast.makeText(MainActivity.this, "This is About us", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this,AboutUsActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(MainActivity.this, "About us", Toast.LENGTH_SHORT).show();
                 }
                 if (itemId == R.id.navShare){
                     drawerLayout.close();
-                    Toast.makeText(MainActivity.this, "This is Share", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Share", Toast.LENGTH_SHORT).show();
                 }
                 if (itemId == R.id.navDevices){
                     drawerLayout.close();
@@ -115,28 +128,30 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-
     }
 
-//    private void getdata() {
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String name = snapshot.getValue(String.class);
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    DeviceModel deviceModel = dataSnapshot.getValue(DeviceModel.class);
-//
-//                }
-//
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//                Toast.makeText(MainActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        });
-//    }
+    private void getData() {
+
+        databaseReference = firebaseDatabase.getReference();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+//                    String latitude = (String) dataSnapshot.child("latitude").getValue();
+                    String longitude = (String) dataSnapshot.getChildren().toString();
+                    String username = (String) dataSnapshot.child("users").child("Aditya ").child("name").getValue();
+                    Toast.makeText(MainActivity.this,  username, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("TAG", "Failed to read value.", databaseError.toException());
+            }
+
+        });
+
+    }
 
     // logout method
     private void logout() {

@@ -50,6 +50,10 @@ public class DevicesActivity extends AppCompatActivity implements RecyclerViewIn
             Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
         }
 
+//        String user = String.valueOf(FirebaseDatabase.getInstance().getReference().child("users").getParent());
+//        Toast.makeText(this, ""+user, Toast.LENGTH_LONG).show();
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference("users/Aditya Khawale /Devices");
         FirebaseRecyclerOptions<DeviceModel> options =
                 new FirebaseRecyclerOptions.Builder<DeviceModel>()
@@ -64,7 +68,7 @@ public class DevicesActivity extends AppCompatActivity implements RecyclerViewIn
         btnAddDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(DevicesActivity.this, "Add Button Clicked!", Toast.LENGTH_SHORT).show();
 
             }
         });
