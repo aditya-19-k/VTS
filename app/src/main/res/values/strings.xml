@@ -33,4 +33,7 @@
     <string name="feature2">Keep in touch with your vechicle!</string>
     <string name="app_support_email">Email</string>
     <string name="phone_number">Phone</string>
+    <string name="catonact_us">Catonact Us</string>
+    <string name="phone_no">1122558869</string>
+    <string name="contact_email">vts@support.com</string>
 </resources>
