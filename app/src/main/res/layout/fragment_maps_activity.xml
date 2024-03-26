@@ -6,4 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:menu="@menu/maps_option"
-    tools:context=".MapsActivity"/>
+    tools:context=".MapsActivity">
+
+</fragment>
