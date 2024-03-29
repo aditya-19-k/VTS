@@ -1,60 +1,36 @@
 package com.example.vts;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.Interpolator;
-import android.graphics.Point;
-import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import io.reactivex.rxjava3.annotations.NonNull;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
-
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     public double latitudeValue;
     public double longitudeValue;
-    private FusedLocationProviderClient fusedLocationClient;
     public String latitude;
     public String longitude;
     public GoogleMap mMap;
+    Button mapTypeButton;
 
     // onCreate method is called when the activity is first created
     @Override
@@ -64,14 +40,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Retrieve the content view that renders the map.
         setContentView(R.layout.fragment_maps_activity);
 
-
 //        // Get the SupportMapFragment and request notification
 //        // when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
+//        mapTypeButton = findViewById(R.id.map_type_button);
+//        mapTypeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
     }
 
@@ -81,21 +62,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.maps_option, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.normal_map:
-//                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-//                //do what you like
-//            default :
-//                return super.onOptionsItemSelected(item);
-//        }
-        Toast.makeText(this, String.valueOf(item.getItemId()), Toast.LENGTH_SHORT).show();
-        return false;
+        int id = item.getItemId();
+        if (id == R.id.normal_map) {
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            return true;
+        } else if (id == R.id.hybrid_map) {
+            mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            return true;
+        } else if (id == R.id.satellite_map) {
+            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            return true;
+        }
+        else if (id == R.id.terrain_map) {
+            mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
+
 
 
 
@@ -113,15 +103,31 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     longitude = String.valueOf(dataSnapshot.child("longitude").getValue());
                     latitudeValue = Double.parseDouble(latitude);
                     longitudeValue = Double.parseDouble(longitude);
-//                    Intent i = new Intent(MapsActivity.this, MapsActivity.class);
-//                    i.putExtra("latitude",latitude);
-//                    i.putExtra("longitude",longitude);
-//                    startActivity(i);
-                    SharedPreferences sharedPreferences = getSharedPreferences("location", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("latitude", latitude);
-                    editor.putString("longitude", longitude);
-                    editor.apply();
+
+                    try {
+                        LatLng myPos = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
+
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(myPos));
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(16f));
+                        mMap.clear();
+                        mMap.addMarker(new MarkerOptions()
+                                .visible(true)
+                                .position(myPos)
+                                .title("Your Vehical"));
+                    }catch (Exception e){
+                        LatLng myPos = new LatLng(18.472414115434123, 73.93671275345763);
+
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(myPos));
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(16f));
+                        mMap.clear();
+                        mMap.addMarker(new MarkerOptions()
+                                .visible(true)
+                                .position(myPos)
+                                .title("Your Vehical"));
+                        Toast.makeText(MapsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+
 
 //                        Toast.makeText(MapsActivity.this, latitude + "," + longitude, Toast.LENGTH_SHORT).show();
                 }
@@ -135,49 +141,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         });
 
-        try {
-
-//            ##############################
-
-
-//            ################################
-//            Intent i = getIntent();
-//            latitudeValue = Double.parseDouble(i.getStringExtra("latitude"));
-//            longitudeValue = Double.parseDouble(i.getStringExtra("longitude"));
-
-            SharedPreferences sharedPreferences = getSharedPreferences("location", MODE_PRIVATE);
-            latitude = sharedPreferences.getString("latitude", "");
-            longitude = sharedPreferences.getString("longitude", "");
-            Toast.makeText(MapsActivity.this, latitude + "," + longitude, Toast.LENGTH_SHORT).show();
-
-            latitudeValue = Double.parseDouble(latitude);
-            longitudeValue = Double.parseDouble(longitude);
-            LatLng myPos = new LatLng(latitudeValue,longitudeValue);
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions()
-                    .visible(true)
-                    .position(myPos)
-                    .title("Your Vehical"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myPos));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(16f));
-
-        }catch (Exception e){
-            latitudeValue = 18.50254023911764;
-            longitudeValue = 73.9394177840463;
-
-            LatLng myPos = new LatLng(latitudeValue,longitudeValue);
-
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myPos));
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions()
-                    .visible(true)
-                    .position(myPos)
-                    .title("Your Vehical"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myPos));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(16f));
-
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-        }
 
 
     }
