@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/secondary_color"
+    tools:context=".AddDeviceActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/add_new_device"
+        android:textSize="30sp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        android:padding="15dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/cardview_border"
+            android:padding="5dp">
+            <EditText
+                android:id="@+id/edtDeviceId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Enter Device ID"/>
+            <EditText
+                android:id="@+id/edtVehicleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/enter_the_vehicle_name"/>
+            <EditText
+                android:id="@+id/edtVehicleNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/enter_the_vehicle_number"/>
+            <EditText
+                android:id="@+id/edtLatitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="@string/enter_latitude"/>
+            <EditText
+                android:id="@+id/edtLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="@string/enter_longitude"/>
+            <EditText
+                android:id="@+id/edtImageurl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:hint="Enter image url"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddVehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/primery_color"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="@string/add_vehicle"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"/>
+
+
+</LinearLayout>

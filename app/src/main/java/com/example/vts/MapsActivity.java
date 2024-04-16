@@ -2,6 +2,8 @@ package com.example.vts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -94,7 +96,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("location");
+        // Get the SharedPreferences object
+        SharedPreferences sharedPref = getSharedPreferences("usernameSP", Context.MODE_PRIVATE);
+        String username = sharedPref.getString("username", "abc");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users/"+username+"/Devices/d1");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -140,8 +145,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
 
         });
-
-
 
     }
 

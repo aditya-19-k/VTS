@@ -36,4 +36,10 @@
     <string name="catonact_us">Catonact Us</string>
     <string name="phone_no">1122558869</string>
     <string name="contact_email">vts@support.com</string>
+    <string name="add_new_device">Add New Device</string>
+    <string name="enter_the_vehicle_number">Enter the vehicle number</string>
+    <string name="enter_the_vehicle_name">Enter the vehicle name</string>
+    <string name="enter_longitude">Enter longitude</string>
+    <string name="enter_latitude">Enter latitude</string>
+    <string name="add_vehicle">Add Vehicle</string>
 </resources>

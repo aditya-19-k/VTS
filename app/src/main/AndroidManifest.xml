@@ -19,6 +19,9 @@
         android:theme="@style/Theme.VTS"
         tools:targetApi="33">
         <activity
+            android:name=".AddDeviceActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutUsActivity"
             android:exported="false" />
 

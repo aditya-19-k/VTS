@@ -5,7 +5,9 @@ import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -92,9 +94,13 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
 
                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    intent.putExtra("nameKey", name);
                                     startActivity(intent);
                                     finish();
+                                    // Get the SharedPreferences object (assuming private mode)
+                                    SharedPreferences sharedPref = getSharedPreferences("usernameSP", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    editor.putString("username",name);
+                                    editor.apply();
                                     Toast.makeText(RegisterActivity.this, "Account is created.",
                                             Toast.LENGTH_SHORT).show();
                                 } else {

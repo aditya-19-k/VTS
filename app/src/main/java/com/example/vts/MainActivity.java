@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -69,11 +70,11 @@ public class MainActivity extends AppCompatActivity{
             mAuth = FirebaseAuth.getInstance();
             String email = mAuth.getCurrentUser().getEmail();
             tvEmailDH.setText(email);
-            tvNameDH.setText("");
+            // Get the SharedPreferences object
+            SharedPreferences sharedPref = getSharedPreferences("usernameSP", Context.MODE_PRIVATE);
+            String username = sharedPref.getString("username", "abc");
+            tvNameDH.setText(username);
 
-
-//            String name = reference.getPath().toString();toString
-//            tvNameDH.setText(name);
 
 //            Glide.with(userIcon.getContext())
 //                    .load("https://www.zmo.ai/wp-content/uploads/2023/11/Sea-girl-created-by-ZMO.webp")

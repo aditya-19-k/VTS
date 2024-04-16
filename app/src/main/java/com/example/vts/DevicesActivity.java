@@ -5,7 +5,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -54,7 +56,11 @@ public class DevicesActivity extends AppCompatActivity implements RecyclerViewIn
 //        Toast.makeText(this, ""+user, Toast.LENGTH_LONG).show();
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("users/Aditya Khawale /Devices");
+        // Get the SharedPreferences object
+        SharedPreferences sharedPref = getSharedPreferences("usernameSP", Context.MODE_PRIVATE);
+        String username = sharedPref.getString("username", "abc");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("users/"+username+"/Devices");
         FirebaseRecyclerOptions<DeviceModel> options =
                 new FirebaseRecyclerOptions.Builder<DeviceModel>()
                         .setQuery(databaseReference, DeviceModel.class)
@@ -68,7 +74,8 @@ public class DevicesActivity extends AppCompatActivity implements RecyclerViewIn
         btnAddDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DevicesActivity.this, "Add Button Clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DevicesActivity.this,AddDeviceActivity.class);
+                startActivity(intent);
 
             }
         });

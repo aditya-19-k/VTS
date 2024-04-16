@@ -3,6 +3,7 @@ package com.example.vts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,12 +81,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                     Toast.makeText(LoginActivity.this, "Login Successful.",Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                                    String name = intent.getStringExtra("nameKey");
-                                    if (name != null) {
-
-                                        intent.putExtra("nameKey", name);
-
-                                    }
                                     startActivity(intent);
                                     finish();
                                 } else {
